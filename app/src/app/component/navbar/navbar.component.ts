@@ -1,30 +1,33 @@
 import { Component } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
-
-declare var bootstrap: any;
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import * as bootstrap from 'bootstrap';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [ LoginModalComponent ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
-  
 
+export class NavbarComponent {
+  private loginModal : any; 
+  
   constructor(){}
 
-  onLogin(){
-    const username = (document.getElementById("username") as HTMLInputElement).value;
-    const password = (document.getElementById("password") as HTMLInputElement).value;
+  ngAfterViewInit():void{
+    const modalEl = document.getElementById("ModalLogin")
+    if(modalEl){
+      this.loginModal = new bootstrap.Modal(modalEl);
+    }
+  }
 
-    if(username == "Admin" && password == "Adminpass"){
-      console.log("Incio de sesion realizado correctamente")
-      //modal.hide();
+  openLogin(){
+    if(this.loginModal){
+      this.loginModal.show();
     }
     else{
-      console.log("Error al ingresar la contra")
+      console.log("Error al abrir el modal");
     }
   }
 }

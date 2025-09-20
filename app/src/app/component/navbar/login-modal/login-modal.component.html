@@ -1,0 +1,41 @@
+<div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Iniciar sesion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="this.closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+                
+        <form [formGroup]="loginForm">
+          @if (inputError) {
+            <div class="alert alert-danger" role="alert">
+              Verifique los datos ingresados
+            </div>
+          }
+          <div class="mb-3">
+            <label for="inputUsername" class="form-label">Username</label>
+            <input formControlName="username" type="email" class="form-control" id="inputUsername" aria-describedby="emailHelp"
+            [ngClass]="{
+            'is-invalid': loginForm.get('username')?.invalid && inputError,
+            'is-valid': loginForm.get('username')?.valid && inputError
+            }">
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword1" class="form-label">Password</label>
+            <input formControlName="password" type="password" class="form-control" id="inputPassword1"
+            [ngClass]="{
+            'is-invalid': loginForm.get('password')?.invalid && inputError,
+            'is-valid': loginForm.get('password')?.valid && inputError
+            }">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="onLogin()">Iniciar Sesion</button>
+      </div>
+    </div>
+  </div>
+</div>
