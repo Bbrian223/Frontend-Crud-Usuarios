@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import * as bootstrap from 'bootstrap';
 
@@ -11,6 +11,7 @@ import * as bootstrap from 'bootstrap';
 })
 
 export class NavbarComponent {
+  @Input() isLogginOn! : boolean;
   private loginModal : any; 
   
   constructor(){}
@@ -28,6 +29,12 @@ export class NavbarComponent {
     }
     else{
       console.log("Error al abrir el modal");
+    }
+  }
+
+  closeLogin(data:boolean){
+    if(this.loginModal){
+      this.loginModal.hide();
     }
   }
 }

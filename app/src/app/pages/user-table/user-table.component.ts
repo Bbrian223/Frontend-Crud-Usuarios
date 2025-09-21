@@ -9,7 +9,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './user-table.component.scss'
 })
 export class UserTableComponent {
-  isLogginOn = true
+  isLogginOn = false;
 
   users = [
     {id: '21', name: 'Brian', lastname: 'Barrera', status: 'Activo'},

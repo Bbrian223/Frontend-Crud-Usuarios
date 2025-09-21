@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from "./component/navbar/navbar.component";
-import { UserTableComponent } from "./component/user-table/user-table.component";
+import { UserTableComponent } from "./pages/user-table/user-table.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, UserTableComponent],
+  imports: [UserTableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
