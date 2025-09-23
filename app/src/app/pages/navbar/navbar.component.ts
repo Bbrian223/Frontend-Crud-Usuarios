@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginModalComponent } from './login-modal/login-modal.component';
+import { AuthService } from '../../services/auth.service';
 import * as bootstrap from 'bootstrap';
 
 @Component({
@@ -11,10 +12,9 @@ import * as bootstrap from 'bootstrap';
 })
 
 export class NavbarComponent {
-  @Input() isLogginOn! : boolean;
   private loginModal : any; 
   
-  constructor(){}
+  constructor(public auth : AuthService){}
 
   ngAfterViewInit():void{
     const modalEl = document.getElementById("ModalLogin")

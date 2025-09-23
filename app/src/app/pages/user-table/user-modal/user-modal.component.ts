@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user-modal',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './user-modal.component.scss'
 })
 export class UserModalComponent {
+@Input() idUser : number | null = null;
+
+constructor(){}
+
 
 }

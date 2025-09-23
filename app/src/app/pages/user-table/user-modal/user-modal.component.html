@@ -1,0 +1,56 @@
+<div class="modal fade" id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">User : {{idUser}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <form class="row g-3">
+          <!--Nombre y Apelido-->
+          <div class="col-md-6">
+            <label for="inFirstname" class="form-label">Firstname</label>
+            <input type="text" class="form-control" id="inFirstname">
+          </div>
+          <div class="col-md-6">
+            <label for="inLastname" class="form-label">Lastname</label>
+            <input type="text" class="form-control" id="inLastname">
+          </div>
+          <!--Telefono y DNI-->
+          <div class="col-md-6">
+            <label for="inTelephone" class="form-label">Telephone</label>
+            <input type="text" class="form-control" id="inTelephone">
+          </div>
+          <div class="col-md-6">
+            <label for="inDocument" class="form-label">Document</label>
+            <input type="text" class="form-control" id="inDocument">
+          </div>
+          <!--Direccion-->
+          <div class="col-12">
+            <label for="inAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inAddress" placeholder="1234 Main St">
+          </div>
+          <!--provincia / ciudad / cod postal-->
+          <div class="col-md-6">
+            <label for="inState" class="form-label">State</label>
+            <input type="text" class="form-control" id="inState">
+          </div>
+          <div class="col-md-4">
+            <label for="inCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inCity">
+          </div>
+          <div class="col-md-2">
+            <label for="inZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inZip">
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>

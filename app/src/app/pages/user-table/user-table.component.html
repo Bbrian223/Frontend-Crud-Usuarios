@@ -1,5 +1,3 @@
-<app-navbar [isLogginOn]="isLogginOn"></app-navbar>
-
 <div class="container">
     <div class="card w-100">
         <div class="card-body">
@@ -10,7 +8,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Lastname</th>
                         <th scope="col">Status</th>
-                        @if(isLogginOn == true){
+                        @if(auth.isLogginIn()){
                             <th scope="col">Opctions</th>
                         }
                     </tr>
@@ -22,10 +20,16 @@
                         <td>{{user.name}}</td>
                         <td>{{user.lastname}}</td>
                         <td>{{user.status}}</td>
-                        @if(isLogginOn == true){
+                        @if(auth.isLogginIn()){
                         <td>
-                            <button class="btn btn-primary">editar</button>
-                            <button class="btn btn-danger">eliminar</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userModal"
+                            (click)="userSelected(user.id)">
+                                <i class="bi bi-eye-fill"></i>      <!--Ver Usuario-->
+                            </button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete"
+                            (click)="userSelected(user.id)">
+                                <i class="bi bi-trash3-fill"></i>   <!--Eliminar Usuario-->
+                            </button>
                         </td>
                         }
                     </tr>
@@ -35,3 +39,6 @@
         </div>
     </div>
 </div>
+
+<app-user-modal [idUser]="numberId"></app-user-modal>
+<app-modal-delete [idUser]="numberId"></app-modal-delete>

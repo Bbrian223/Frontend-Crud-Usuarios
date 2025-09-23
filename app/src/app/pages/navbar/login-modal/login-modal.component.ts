@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginRequest } from '../../../shared/interfaces/LoginRequest';
+import { AuthService } from '../../../services/auth.service';
 
 
 @Component({
@@ -30,7 +31,10 @@ export class LoginModalComponent {
     ]]
   })
   
-  constructor(private formBuider : FormBuilder){
+  constructor(
+    private formBuider : FormBuilder,
+    private auth : AuthService
+    ){
   }
 
 
@@ -51,12 +55,12 @@ export class LoginModalComponent {
   }
 
   validateCredentials(request : LoginRequest):void{
-    if(request.username == 'Admin' && request.password == "adminpass"){
+    if(this.auth.login(request)){
       this.closeLogin();
+      return;
     }
-    else{
-      this.validateInput(true);
-    }
+    
+    this.validateInput(true);
   }
 
   closeLogin(){
