@@ -9,8 +9,17 @@ import { Component, Input } from '@angular/core';
 })
 export class UserModalComponent {
 @Input() idUser : number | null = null;
+editar = false;
 
 constructor(){}
 
+SaveChanges(){
+  //guardar los datos en el servicio
+  this.closeView();
+}
+
+closeView(){
+  this.editar = false;
+}
 
 }

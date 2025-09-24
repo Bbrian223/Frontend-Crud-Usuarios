@@ -8,7 +8,7 @@ export class AuthService {
   private STORAGE_KEY = 'isLoggedIn';
 
   private _isLogginIn = signal(
-    localStorage.getItem(this.STORAGE_KEY) === 'true'
+    sessionStorage.getItem(this.STORAGE_KEY) === 'true'
   );
 
   isLogginIn =this._isLogginIn.asReadonly();
@@ -26,11 +26,11 @@ export class AuthService {
 
   logout(){
     this._isLogginIn.set(false)
-    localStorage.removeItem(this.STORAGE_KEY);
+    sessionStorage.removeItem(this.STORAGE_KEY);
   }
 
   saveData(){
-    localStorage.setItem(this.STORAGE_KEY,'true');
+    sessionStorage.setItem(this.STORAGE_KEY,'true');
     this._isLogginIn.set(true);
   } 
    

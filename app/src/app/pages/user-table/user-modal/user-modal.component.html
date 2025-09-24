@@ -1,9 +1,9 @@
-<div class="modal fade" id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+<div class="modal fade" id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true" data-bs-keyboard="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">User : {{idUser}}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeView()"></button>
       </div>
       <div class="modal-body">
         
@@ -11,45 +11,49 @@
           <!--Nombre y Apelido-->
           <div class="col-md-6">
             <label for="inFirstname" class="form-label">Firstname</label>
-            <input type="text" class="form-control" id="inFirstname">
+            <input type="text" class="form-control" id="inFirstname" disabled>
           </div>
           <div class="col-md-6">
             <label for="inLastname" class="form-label">Lastname</label>
-            <input type="text" class="form-control" id="inLastname">
+            <input type="text" class="form-control" id="inLastname" disabled>
           </div>
           <!--Telefono y DNI-->
           <div class="col-md-6">
-            <label for="inTelephone" class="form-label">Telephone</label>
-            <input type="text" class="form-control" id="inTelephone">
+            <label for="inDocument" class="form-label">Document</label>
+            <input type="text" class="form-control" id="inDocument" disabled>
           </div>
           <div class="col-md-6">
-            <label for="inDocument" class="form-label">Document</label>
-            <input type="text" class="form-control" id="inDocument">
+            <label for="inTelephone" class="form-label">Telephone</label>
+            <input type="text" class="form-control" id="inTelephone" [disabled]="!editar">
           </div>
           <!--Direccion-->
           <div class="col-12">
             <label for="inAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inAddress" placeholder="1234 Main St">
+            <input type="text" class="form-control" id="inAddress" placeholder="1234 Main St" [disabled]="!editar">
           </div>
           <!--provincia / ciudad / cod postal-->
           <div class="col-md-6">
             <label for="inState" class="form-label">State</label>
-            <input type="text" class="form-control" id="inState">
+            <input type="text" class="form-control" id="inState" [disabled]="!editar">
           </div>
           <div class="col-md-4">
             <label for="inCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inCity">
+            <input type="text" class="form-control" id="inCity" [disabled]="!editar">
           </div>
           <div class="col-md-2">
             <label for="inZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inZip">
+            <input type="text" class="form-control" id="inZip" [disabled]="!editar">
           </div>
         </form>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        @if(!editar){
+          <button type="button" class="btn btn-primary" (click)="editar = true">Editar</button>
+        }@else{
+          <button type="button" class="btn btn-danger" (click)="closeView()">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="SaveChanges()">Guardar</button>
+        }
       </div>
     </div>
   </div>
